@@ -1,0 +1,4 @@
+include 'desktop', 'core'
+include 'core:assets'
+findProject(':core:assets')?.name = 'assets'
+

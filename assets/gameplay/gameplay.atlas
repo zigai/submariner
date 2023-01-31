@@ -1,0 +1,55 @@
+
+gameplay.png
+size: 1024, 256
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+background
+  rotate: false
+  xy: 2, 52
+  size: 768, 192
+  orig: 768, 192
+  offset: 0, 0
+  index: -1
+bubble
+  rotate: false
+  xy: 879, 212
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+fish
+  rotate: false
+  xy: 843, 156
+  size: 28, 22
+  orig: 28, 22
+  offset: 0, 0
+  index: -1
+heart
+  rotate: false
+  xy: 2, 2
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+mine
+  rotate: false
+  xy: 772, 109
+  size: 69, 69
+  orig: 69, 69
+  offset: 0, 0
+  index: -1
+projectile
+  rotate: false
+  xy: 772, 75
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+submarine
+  rotate: false
+  xy: 772, 180
+  size: 105, 64
+  orig: 105, 64
+  offset: 0, 0
+  index: -1
