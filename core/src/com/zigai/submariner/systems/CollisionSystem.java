@@ -6,7 +6,6 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
 import com.badlogic.gdx.math.Intersector;
-import com.zigai.submariner.Config;
 import com.zigai.submariner.GameManager;
 import com.zigai.submariner.Mappers;
 import com.zigai.submariner.components.*;
@@ -15,11 +14,11 @@ import static com.zigai.submariner.Assets.explosion;
 
 public class CollisionSystem extends EntitySystem {
 
-    private static final Family SUBMARINE_FAMILY = Family.all(Submarine.class, Bounds.class).get();
-    private static final Family MINE_FAMILY = Family.all(Mine.class, Bounds.class).get();
-    private static final Family FISH_FAMILY = Family.all(Fish.class, Bounds.class).get();
-    private static final Family HEART_FAMILY = Family.all(Heart.class, Bounds.class).get();
-    private static final Family PROJECTILE_FAMILY = Family.all(Projectile.class, Bounds.class).get();
+    private static final Family SUBMARINE_FAMILY = Family.all(Submarine.class, BoxCollider.class).get();
+    private static final Family MINE_FAMILY = Family.all(Mine.class, CircleCollider.class).get();
+    private static final Family FISH_FAMILY = Family.all(Fish.class, BoxCollider.class).get();
+    private static final Family HEART_FAMILY = Family.all(Heart.class, BoxCollider.class).get();
+    private static final Family PROJECTILE_FAMILY = Family.all(Projectile.class, BoxCollider.class).get();
 
     private SoundSystem soundSystem;
 
@@ -41,22 +40,20 @@ public class CollisionSystem extends EntitySystem {
         ImmutableArray<Entity> hearts = getEngine().getEntitiesFor(HEART_FAMILY);
         ImmutableArray<Entity> projectiles = getEngine().getEntitiesFor(PROJECTILE_FAMILY);
 
-
         for (Entity submarineEntity : submarines) {
-            Bounds submarineBounds = Mappers.BOUNDS.get(submarineEntity);
-
+            BoxCollider submarineBounds = Mappers.BOX_COLLIDER.get(submarineEntity);
             // check collision with mines
             for (Entity mineEntity : mines) {
                 Mine mine = Mappers.MINE.get(mineEntity);
                 if (mine.hit)
                     continue;
 
-                Bounds mineBounds = Mappers.BOUNDS.get(mineEntity);
+                CircleCollider mineBounds = Mappers.CIRCLE_COLLIDER.get(mineEntity);
                 Transform mineTransform = Mappers.TRANSFORM.get(mineEntity);
                 // check projectile collisions with mines
                 for (Entity projectileEntity : projectiles) {
-                    Bounds projectileBounds = Mappers.BOUNDS.get(projectileEntity);
-                    if (Intersector.overlaps(projectileBounds.rectangle, mineBounds.rectangle)) {
+                    BoxCollider projectileBounds = Mappers.BOX_COLLIDER.get(projectileEntity);
+                    if (Intersector.overlaps(mineBounds.bounds, projectileBounds.bounds)) {
                         GameManager.INSTANCE.onProjectileMineCollision();
                         mine.hit = true;
                         soundSystem.playExplosionSound();
@@ -71,7 +68,7 @@ public class CollisionSystem extends EntitySystem {
                 if (mine.hit)
                     continue;
 
-                if (Intersector.overlaps(submarineBounds.rectangle, mineBounds.rectangle)) {
+                if (Intersector.overlaps(mineBounds.bounds, submarineBounds.bounds)) {
                     mine.hit = true;
                     soundSystem.playExplosionSound();
                     explosion.reset();
@@ -89,11 +86,11 @@ public class CollisionSystem extends EntitySystem {
                 if (fish.hit)
                     continue;
 
-                Bounds fishBounds = Mappers.BOUNDS.get(fishEntity);
+                BoxCollider fishBounds = Mappers.BOX_COLLIDER.get(fishEntity);
                 // check projectile collisions with fishes
                 for (Entity projectileEntity : projectiles) {
-                    Bounds projectileBounds = Mappers.BOUNDS.get(projectileEntity);
-                    if (Intersector.overlaps(projectileBounds.rectangle, fishBounds.rectangle)) {
+                    BoxCollider projectileBounds = Mappers.BOX_COLLIDER.get(projectileEntity);
+                    if (Intersector.overlaps(projectileBounds.bounds, fishBounds.bounds)) {
                         GameManager.INSTANCE.onProjectileFishCollision();
                         fish.hit = true;
                         Transform fishTransform = Mappers.TRANSFORM.get(fishEntity);
@@ -110,7 +107,7 @@ public class CollisionSystem extends EntitySystem {
                 if (fish.hit)
                     continue;
 
-                if (Intersector.overlaps(submarineBounds.rectangle, fishBounds.rectangle)) {
+                if (Intersector.overlaps(submarineBounds.bounds, fishBounds.bounds)) {
                     fish.hit = true;
                     GameManager.INSTANCE.onFishCollision();
                     soundSystem.playPickupSound();
@@ -123,11 +120,11 @@ public class CollisionSystem extends EntitySystem {
                 Heart heart = Mappers.HEART.get(heartEntity);
                 if (heart.hit)
                     continue;
-                Bounds heartBounds = Mappers.BOUNDS.get(heartEntity);
+                BoxCollider heartBounds = Mappers.BOX_COLLIDER.get(heartEntity);
                 // check projectile collisions with hearts
                 for (Entity projectileEntity : projectiles) {
-                    Bounds projectileBounds = Mappers.BOUNDS.get(projectileEntity);
-                    if (Intersector.overlaps(projectileBounds.rectangle, heartBounds.rectangle)) {
+                    BoxCollider projectileBounds = Mappers.BOX_COLLIDER.get(projectileEntity);
+                    if (Intersector.overlaps(projectileBounds.bounds, heartBounds.bounds)) {
                         GameManager.INSTANCE.onProjectileFishCollision();
                         heart.hit = true;
                         soundSystem.playExplosionSound();
@@ -143,7 +140,7 @@ public class CollisionSystem extends EntitySystem {
                 }
                 if (heart.hit)
                     continue;
-                if (Intersector.overlaps(submarineBounds.rectangle, heartBounds.rectangle)) {
+                if (Intersector.overlaps(submarineBounds.bounds, heartBounds.bounds)) {
                     heart.hit = true;
                     GameManager.INSTANCE.onHeartCollision();
                     soundSystem.playPickupSound();

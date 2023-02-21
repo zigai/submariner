@@ -59,6 +59,7 @@ public class GameScreen extends ScreenAdapter {
         engine.addSystem(new MineSpawnSystem(MINE.SPAWN_TIME));
         engine.addSystem(new InputSystem());
         engine.addSystem(new BoundsSystem());
+        engine.addSystem(new CircleBoundsSystem());
         engine.addSystem(new CollisionSystem());
         engine.addSystem(new SubmarineShootingSystem(Config.PROJECTILE.SHOOTING_COOLDOWN));
         engine.addSystem(new HudRenderSystem(game.getBatch(), hudViewport, font));

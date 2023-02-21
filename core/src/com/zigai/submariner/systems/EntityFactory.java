@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.zigai.submariner.Assets;
 import com.zigai.submariner.Config;
+import com.zigai.submariner.Util;
 import com.zigai.submariner.assets.RegionNames;
 import com.zigai.submariner.components.*;
 import com.zigai.submariner.Config.FISH;
@@ -37,9 +38,9 @@ public class EntityFactory extends EntitySystem {
         size.width = FISH.WIDTH;
         size.height = FISH.HEIGHT;
 
-        Bounds bounds = engine.createComponent(Bounds.class);
-        bounds.rectangle.setPosition(transform.position);
-        bounds.rectangle.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
+        BoxCollider bounds = engine.createComponent(BoxCollider.class);
+        bounds.bounds.setPosition(transform.position);
+        bounds.bounds.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
 
         Layer layer = engine.createComponent(Layer.class);
         layer.value = LAYERS.FISH;
@@ -64,14 +65,18 @@ public class EntityFactory extends EntitySystem {
         transform.position = new Vector2();
         transform.position.x = Config.WORLD_WIDTH;
         transform.position.y = MathUtils.random(0, Config.WORLD_HEIGHT - MINE.HEIGHT);
-        transform.scale.set(1, 1);
+        float scl = Util.getMineScale(1, MINE.MAX_SCALE);
+        System.out.println("SCALE: " + scl);
+        transform.scale.set(scl, scl);
+
         Size size = engine.createComponent(Size.class);
         size.width = MINE.WIDTH;
         size.height = MINE.HEIGHT;
 
-        Bounds bounds = engine.createComponent(Bounds.class);
-        bounds.rectangle.setPosition(transform.position);
-        bounds.rectangle.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
+        CircleCollider bounds = engine.createComponent(CircleCollider.class);
+        bounds.bounds.setPosition(transform.position);
+
+        bounds.bounds.setRadius(size.width * transform.scale.x / 2 * 0.7f);
         Layer layer = engine.createComponent(Layer.class);
         layer.value = LAYERS.MINE;
 
@@ -99,9 +104,9 @@ public class EntityFactory extends EntitySystem {
         size.width = SUBMARINE.WIDTH;
         size.height = SUBMARINE.HEIGHT;
 
-        Bounds bounds = engine.createComponent(Bounds.class);
-        bounds.rectangle.setPosition(transform.position);
-        bounds.rectangle.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
+        BoxCollider bounds = engine.createComponent(BoxCollider.class);
+        bounds.bounds.setPosition(transform.position);
+        bounds.bounds.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
 
         Texture texture = engine.createComponent(Texture.class);
         texture.region = SUBMARINE.TEXTURE;
@@ -125,9 +130,9 @@ public class EntityFactory extends EntitySystem {
         size.width = HEART.WIDTH;
         size.height = HEART.HEIGHT;
 
-        Bounds bounds = engine.createComponent(Bounds.class);
-        bounds.rectangle.setPosition(transform.position);
-        bounds.rectangle.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
+        BoxCollider bounds = engine.createComponent(BoxCollider.class);
+        bounds.bounds.setPosition(transform.position);
+        bounds.bounds.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
 
         Layer layer = engine.createComponent(Layer.class);
         layer.value = LAYERS.HEART;
@@ -153,9 +158,9 @@ public class EntityFactory extends EntitySystem {
 
         ImmutableArray<Entity> sub = engine.getEntitiesFor(SUBMARINE_FAMILY);
         Entity subEntity = sub.get(0);
-        Bounds subBounds = subEntity.getComponent(Bounds.class);
+        BoxCollider subBounds = subEntity.getComponent(BoxCollider.class);
         Vector2 subCenter = new Vector2();
-        subBounds.rectangle.getCenter(subCenter);
+        subBounds.bounds.getCenter(subCenter);
         subCenter.sub(SUBMARINE.WIDTH / 2f, SUBMARINE.HEIGHT / 2f);
         transform.position.set(subCenter);
 
@@ -163,9 +168,9 @@ public class EntityFactory extends EntitySystem {
         size.width = PROJECTILE.WIDTH;
         size.height = PROJECTILE.HEIGHT;
 
-        Bounds bounds = engine.createComponent(Bounds.class);
-        bounds.rectangle.setPosition(transform.position);
-        bounds.rectangle.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
+        BoxCollider bounds = engine.createComponent(BoxCollider.class);
+        bounds.bounds.setPosition(transform.position);
+        bounds.bounds.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
 
         Layer layer = engine.createComponent(Layer.class);
         layer.value = LAYERS.PROJECTILE;

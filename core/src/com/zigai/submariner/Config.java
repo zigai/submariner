@@ -8,8 +8,8 @@ import com.badlogic.gdx.Input.Keys;
 import static com.zigai.submariner.Util.seconds;
 
 public class Config {
-    public static int WORLD_WIDTH = 1920;
-    public static int WORLD_HEIGHT = 1080;
+    public static int WORLD_WIDTH = 1600;
+    public static int WORLD_HEIGHT = 900;
     public static int STARTING_LIVES = 3;
     public static int MAX_LIVES = 5;
 
@@ -45,6 +45,9 @@ public class Config {
         public static final float MIN_SPAWN_TIME = 0.5f;
         public static final int INCREASE_SPEED_EVERY_N_POINTS = 300; // Increase speed of mines every 300 points
         public static final int INCREASE_SPEED_BY = -100;
+        public static final float MAX_SCALE = 1.5f;
+        public static final float MIN_SCALE = 0.9f;
+
     }
 
     public static class HEART {

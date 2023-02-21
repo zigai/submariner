@@ -9,13 +9,14 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import com.zigai.submariner.Mappers;
-import com.zigai.submariner.components.Bounds;
+import com.zigai.submariner.components.BoxCollider;
+import com.zigai.submariner.components.CircleCollider;
 
 public class DebugRenderSystem extends IteratingSystem {
 
     // == constants ==
-    private static final Family FAMILY = Family.all(
-            Bounds.class
+    private static final Family FAMILY = Family.one(
+            BoxCollider.class, CircleCollider.class
     ).get();
 
     private final Viewport viewport;
@@ -45,9 +46,13 @@ public class DebugRenderSystem extends IteratingSystem {
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        Bounds bounds = Mappers.BOUNDS.get(entity);
-
-        renderer.rect(bounds.rectangle.x, bounds.rectangle.y,
-                bounds.rectangle.width, bounds.rectangle.height);
+        BoxCollider bounds = Mappers.BOX_COLLIDER.get(entity);
+        if (bounds == null) {
+            CircleCollider boundCircle = Mappers.CIRCLE_COLLIDER.get(entity);
+            renderer.circle(boundCircle.bounds.x, boundCircle.bounds.y, boundCircle.bounds.radius);
+            return;
+        }
+        renderer.rect(bounds.bounds.x, bounds.bounds.y,
+                bounds.bounds.width, bounds.bounds.height);
     }
 }
