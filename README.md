@@ -17,7 +17,7 @@ A 2D underwater game written in Java using LibGDX and Ashley.
 - ```F6``` -  Toggle hitbox indicators
 
 ### Assets:
-- [Backround](https://opengameart.org/content/underwater-fantasy)
+- [Background](https://opengameart.org/content/underwater-fantasy)
 - [Fish & Bombs](https://opengameart.org/content/underwater-diving-pack)
 - [Submarine](https://www.deviantart.com/darth-biomech/art/Submarine-626121234)
 - [Explosion Sound](https://opengameart.org/content/boom-pack-1)
