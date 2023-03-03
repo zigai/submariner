@@ -12,7 +12,7 @@ public class Util {
     }
 
     public static float getMineScale(float min, float max) {
-        float num = (float) random.nextGaussian(1.1, 0.3);
+        float num = (float) random.nextGaussian(1.1f, 0.3f);
         if (num > Config.MINE.MAX_SCALE) {
             num = Config.MINE.MAX_SCALE;
         }
