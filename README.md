@@ -13,7 +13,7 @@ A 2D underwater game written in Java using LibGDX and Ashley.
 - ```SPACE``` - Shoot
 - ```P``` - Pause
 - ```R``` - Restart
-- ```F5``` -  Toogle debug grid
+- ```F5``` -  Toggle debug grid
 - ```F6``` -  Toggle hitbox indicators
 
 ### Assets:
