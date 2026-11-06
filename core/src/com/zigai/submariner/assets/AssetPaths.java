@@ -7,6 +7,5 @@ public class AssetPaths {
     public static final String PICKUP_SOUND = "sounds/pickup.wav";
     public static final String EXPLOSION_SOUND = "sounds/explosion.wav";
 
-    private AssetPaths() {
-    }
+    private AssetPaths() {}
 }

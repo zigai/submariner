@@ -5,7 +5,7 @@ import com.badlogic.ashley.core.EntitySystem;
 
 public class StartupSystem extends EntitySystem {
     public StartupSystem() {
-        setProcessing(false);   // it doesn't call update
+        setProcessing(false); // it doesn't call update
     }
 
     @Override

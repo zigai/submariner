@@ -8,8 +8,7 @@ import java.util.Comparator;
 public class LayerComparator implements Comparator<Entity> {
     public static final LayerComparator INSTANCE = new LayerComparator();
 
-    private LayerComparator() {
-    }
+    private LayerComparator() {}
 
     @Override
     public int compare(Entity a, Entity b) {

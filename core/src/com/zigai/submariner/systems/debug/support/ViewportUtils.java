@@ -109,6 +109,5 @@ public class ViewportUtils {
         log.debug("x PPU= " + xPPU + " yPPU= " + yPPU);
     }
 
-    private ViewportUtils() {
-    }
+    private ViewportUtils() {}
 }

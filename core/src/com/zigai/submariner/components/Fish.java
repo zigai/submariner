@@ -6,7 +6,6 @@ import com.badlogic.gdx.utils.Pool;
 public class Fish implements Component, Pool.Poolable {
     public boolean hit;
 
-
     @Override
     public void reset() {
         this.hit = false;

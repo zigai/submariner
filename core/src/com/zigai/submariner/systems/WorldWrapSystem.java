@@ -10,11 +10,8 @@ import com.zigai.submariner.components.Transform;
 import com.zigai.submariner.components.WorldWrap;
 
 public class WorldWrapSystem extends IteratingSystem {
-    private static final Family FAMILY = Family.all(
-            Transform.class,
-            Size.class,
-            WorldWrap.class
-    ).get();
+    private static final Family FAMILY =
+            Family.all(Transform.class, Size.class, WorldWrap.class).get();
 
     public WorldWrapSystem() {
         super(FAMILY);

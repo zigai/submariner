@@ -12,10 +12,7 @@ public class AssetPacker {
         TexturePacker.Settings settings = new TexturePacker.Settings();
         settings.debug = DRAW_DEBUG_OUTLINE;
 
-        TexturePacker.process(settings,
-                RAW_ASSETS_PATH + "/gameplay",
-                ASSETS_PATH + "/gameplay",
-                "gameplay"
-        );
+        TexturePacker.process(
+                settings, RAW_ASSETS_PATH + "/gameplay", ASSETS_PATH + "/gameplay", "gameplay");
     }
 }

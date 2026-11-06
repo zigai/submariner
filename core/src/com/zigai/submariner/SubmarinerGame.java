@@ -1,12 +1,9 @@
 package com.zigai.submariner;
 
 import com.badlogic.gdx.Application;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
 import com.zigai.submariner.screens.GameScreen;
 
 public class SubmarinerGame extends Game {
@@ -19,7 +16,6 @@ public class SubmarinerGame extends Game {
         Assets.load();
         setScreen(new GameScreen(this));
     }
-
 
     @Override
     public void dispose() {

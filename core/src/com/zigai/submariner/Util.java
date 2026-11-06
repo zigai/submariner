@@ -1,6 +1,5 @@
 package com.zigai.submariner;
 
-
 import java.util.Random;
 
 public class Util {

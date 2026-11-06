@@ -5,8 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.utils.Logger;
 import com.zigai.submariner.Config.FISH;
-import com.zigai.submariner.Config.MINE;
 import com.zigai.submariner.Config.HEART;
+import com.zigai.submariner.Config.MINE;
 import com.zigai.submariner.screens.GameScreen;
 import com.zigai.submariner.systems.EntityFactory;
 import com.zigai.submariner.systems.MineSpawnSystem;
@@ -34,7 +34,6 @@ public class GameManager {
         nextMineSpawnRateIncrease = MINE.DECREASE_SPAWN_TIME_EVERY_N_POINTS;
         nextMineSpeedIncrease = MINE.INCREASE_SPEED_EVERY_N_POINTS;
     }
-
 
     public void addEngine(PooledEngine engine) {
         this.engine = engine;
@@ -110,7 +109,6 @@ public class GameManager {
         return PREFS.getInteger("HIGHSCORE", 0);
     }
 
-
     public void reset() {
         INSTANCE = new GameManager();
     }
@@ -126,7 +124,6 @@ public class GameManager {
     public boolean shouldIncreaseMineSpeed() {
         return score >= nextMineSpeedIncrease;
     }
-
 
     public boolean isDebugMode() {
         return debug;

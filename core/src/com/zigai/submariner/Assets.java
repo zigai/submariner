@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Logger;
 import com.zigai.submariner.assets.AssetDescriptors;
 
-
 public class Assets {
     public static AssetManager assetManager;
     private static TextureAtlas gameplayAtlas;
@@ -37,7 +36,5 @@ public class Assets {
         return gameplayAtlas.findRegion(name);
     }
 
-
-    private Assets() {
-    }
+    private Assets() {}
 }

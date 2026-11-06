@@ -9,7 +9,6 @@ public class Physics implements Component, Pool.Poolable {
     public Vector2 acceleration;
     public float rotationSpeed = 0;
 
-
     @Override
     public void reset() {
         this.velocity.set(0, 0);

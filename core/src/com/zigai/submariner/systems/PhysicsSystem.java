@@ -9,7 +9,6 @@ import com.zigai.submariner.components.Transform;
 
 public class PhysicsSystem extends IteratingSystem {
 
-
     private static final Family FAMILY = Family.all(Transform.class, Physics.class).get();
 
     public PhysicsSystem() {

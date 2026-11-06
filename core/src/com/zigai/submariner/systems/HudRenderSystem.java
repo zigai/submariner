@@ -47,7 +47,10 @@ public class HudRenderSystem extends EntitySystem {
         TextureRegion heart = Assets.getTexture(RegionNames.HEART);
         float currentPadding = PADDING_SCORE;
         for (int i = 0; i < GameManager.INSTANCE.getLives(); i++) {
-            batch.draw(heart, currentPadding, hudViewport.getWorldHeight() - heart.getRegionHeight() - PADDING_SCORE);
+            batch.draw(
+                    heart,
+                    currentPadding,
+                    hudViewport.getWorldHeight() - heart.getRegionHeight() - PADDING_SCORE);
             currentPadding += PADDING_HEARTS + heart.getRegionWidth();
         }
     }

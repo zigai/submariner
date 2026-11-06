@@ -1,13 +1,11 @@
 package com.zigai.submariner.systems.debug;
 
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
 import com.zigai.submariner.Mappers;
 import com.zigai.submariner.components.BoxCollider;
 import com.zigai.submariner.components.CircleCollider;
@@ -15,9 +13,7 @@ import com.zigai.submariner.components.CircleCollider;
 public class DebugRenderSystem extends IteratingSystem {
 
     // == constants ==
-    private static final Family FAMILY = Family.one(
-            BoxCollider.class, CircleCollider.class
-    ).get();
+    private static final Family FAMILY = Family.one(BoxCollider.class, CircleCollider.class).get();
 
     private final Viewport viewport;
     private final ShapeRenderer renderer;
@@ -52,7 +48,6 @@ public class DebugRenderSystem extends IteratingSystem {
             renderer.circle(boundCircle.bounds.x, boundCircle.bounds.y, boundCircle.bounds.radius);
             return;
         }
-        renderer.rect(bounds.bounds.x, bounds.bounds.y,
-                bounds.bounds.width, bounds.bounds.height);
+        renderer.rect(bounds.bounds.x, bounds.bounds.y, bounds.bounds.width, bounds.bounds.height);
     }
 }

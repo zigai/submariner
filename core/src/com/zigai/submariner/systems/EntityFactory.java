@@ -6,15 +6,15 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.zigai.submariner.Assets;
 import com.zigai.submariner.Config;
+import com.zigai.submariner.Config.FISH;
+import com.zigai.submariner.Config.HEART;
+import com.zigai.submariner.Config.LAYERS;
+import com.zigai.submariner.Config.MINE;
+import com.zigai.submariner.Config.PROJECTILE;
+import com.zigai.submariner.Config.SUBMARINE;
 import com.zigai.submariner.Util;
 import com.zigai.submariner.assets.RegionNames;
 import com.zigai.submariner.components.*;
-import com.zigai.submariner.Config.FISH;
-import com.zigai.submariner.Config.MINE;
-import com.zigai.submariner.Config.LAYERS;
-import com.zigai.submariner.Config.SUBMARINE;
-import com.zigai.submariner.Config.HEART;
-import com.zigai.submariner.Config.PROJECTILE;
 
 public class EntityFactory extends EntitySystem {
     private PooledEngine engine;
@@ -56,7 +56,16 @@ public class EntityFactory extends EntitySystem {
         CleanUp cleanUp = engine.createComponent(CleanUp.class);
         Fish fishComponent = engine.createComponent(Fish.class);
 
-        Entity fish = engine.createEntity().add(transform).add(size).add(texture).add(layer).add(fishComponent).add(physics).add(bounds).add(cleanUp);
+        Entity fish =
+                engine.createEntity()
+                        .add(transform)
+                        .add(size)
+                        .add(texture)
+                        .add(layer)
+                        .add(fishComponent)
+                        .add(physics)
+                        .add(bounds)
+                        .add(cleanUp);
         engine.addEntity(fish);
     }
 
@@ -90,7 +99,16 @@ public class EntityFactory extends EntitySystem {
         CleanUp cleanUp = engine.createComponent(CleanUp.class);
         Mine mineComponent = engine.createComponent(Mine.class);
 
-        Entity mine = engine.createEntity().add(transform).add(size).add(texture).add(layer).add(mineComponent).add(physics).add(bounds).add(cleanUp);
+        Entity mine =
+                engine.createEntity()
+                        .add(transform)
+                        .add(size)
+                        .add(texture)
+                        .add(layer)
+                        .add(mineComponent)
+                        .add(physics)
+                        .add(bounds)
+                        .add(cleanUp);
         engine.addEntity(mine);
     }
 
@@ -116,7 +134,15 @@ public class EntityFactory extends EntitySystem {
         WorldWrap worldWrap = engine.createComponent(WorldWrap.class);
 
         Submarine submarineComponent = engine.createComponent(Submarine.class);
-        Entity submarine = engine.createEntity().add(transform).add(size).add(texture).add(layer).add(submarineComponent).add(bounds).add(worldWrap);
+        Entity submarine =
+                engine.createEntity()
+                        .add(transform)
+                        .add(size)
+                        .add(texture)
+                        .add(layer)
+                        .add(submarineComponent)
+                        .add(bounds)
+                        .add(worldWrap);
         engine.addEntity(submarine);
     }
 
@@ -147,7 +173,16 @@ public class EntityFactory extends EntitySystem {
         CleanUp cleanUp = engine.createComponent(CleanUp.class);
         Heart heartComponent = engine.createComponent(Heart.class);
 
-        Entity heart = engine.createEntity().add(transform).add(size).add(texture).add(layer).add(heartComponent).add(physics).add(bounds).add(cleanUp);
+        Entity heart =
+                engine.createEntity()
+                        .add(transform)
+                        .add(size)
+                        .add(texture)
+                        .add(layer)
+                        .add(heartComponent)
+                        .add(physics)
+                        .add(bounds)
+                        .add(cleanUp);
         engine.addEntity(heart);
     }
 
@@ -184,7 +219,16 @@ public class EntityFactory extends EntitySystem {
         CleanUp cleanUp = engine.createComponent(CleanUp.class);
         Projectile projectileComponent = engine.createComponent(Projectile.class);
 
-        Entity projectile = engine.createEntity().add(transform).add(size).add(texture).add(layer).add(projectileComponent).add(physics).add(bounds).add(cleanUp);
+        Entity projectile =
+                engine.createEntity()
+                        .add(transform)
+                        .add(size)
+                        .add(texture)
+                        .add(layer)
+                        .add(projectileComponent)
+                        .add(physics)
+                        .add(bounds)
+                        .add(cleanUp);
         engine.addEntity(projectile);
     }
 

@@ -8,8 +8,8 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.Logger;
 
 /**
- * Info/Configuration for {@link DebugCameraController}.
- * Loads configuration from file in assetsDir/debug/debug-camera.json
+ * Info/Configuration for {@link DebugCameraController}. Loads configuration from file in
+ * assetsDir/debug/debug-camera.json
  *
  * @author goran on 22/08/2016.
  */
@@ -184,21 +184,45 @@ public class DebugCameraInfo {
     public String toString() {
         String LS = System.getProperty("line.separator");
 
-        return "DebugCameraInfo {" + LS +
-                "maxZoomIn= " + maxZoomIn + LS +
-                "maxZoomOut= " + maxZoomOut + LS +
-                "moveSpeed= " + moveSpeed + LS +
-                "zoomSpeed= " + zoomSpeed + LS +
-                "leftKey= " + Input.Keys.toString(leftKey) + LS +
-                "rightKey= " + Input.Keys.toString(rightKey) + LS +
-                "upKey= " + Input.Keys.toString(upKey) + LS +
-                "downKey= " + Input.Keys.toString(downKey) + LS +
-                "zoomInKey= " + Input.Keys.toString(zoomInKey) + LS +
-                "zoomOutKey= " + Input.Keys.toString(zoomOutKey) + LS +
-                "resetKey= " + Input.Keys.toString(resetKey) + LS +
-                "logKey= " + Input.Keys.toString(logKey) + LS +
-                "}";
-
+        return "DebugCameraInfo {"
+                + LS
+                + "maxZoomIn= "
+                + maxZoomIn
+                + LS
+                + "maxZoomOut= "
+                + maxZoomOut
+                + LS
+                + "moveSpeed= "
+                + moveSpeed
+                + LS
+                + "zoomSpeed= "
+                + zoomSpeed
+                + LS
+                + "leftKey= "
+                + Input.Keys.toString(leftKey)
+                + LS
+                + "rightKey= "
+                + Input.Keys.toString(rightKey)
+                + LS
+                + "upKey= "
+                + Input.Keys.toString(upKey)
+                + LS
+                + "downKey= "
+                + Input.Keys.toString(downKey)
+                + LS
+                + "zoomInKey= "
+                + Input.Keys.toString(zoomInKey)
+                + LS
+                + "zoomOutKey= "
+                + Input.Keys.toString(zoomOutKey)
+                + LS
+                + "resetKey= "
+                + Input.Keys.toString(resetKey)
+                + LS
+                + "logKey= "
+                + Input.Keys.toString(logKey)
+                + LS
+                + "}";
     }
 
     // == static methods ==

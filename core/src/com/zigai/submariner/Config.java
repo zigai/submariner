@@ -1,11 +1,10 @@
 package com.zigai.submariner;
 
+import static com.zigai.submariner.Util.seconds;
 
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.zigai.submariner.assets.RegionNames;
-import com.badlogic.gdx.Input.Keys;
-
-import static com.zigai.submariner.Util.seconds;
 
 public class Config {
     public static int WORLD_WIDTH = 1600;
@@ -40,14 +39,15 @@ public class Config {
         public static int HIT_REWARD = 2;
         public static final TextureRegion TEXTURE = Assets.getTexture(RegionNames.MINE);
         public static float SPAWN_TIME = 2; // Spawn a mine every 2 seconds
-        public static final int DECREASE_SPAWN_TIME_EVERY_N_POINTS = 200; // Increase spawn rate if mines every 200 points
+        public static final int DECREASE_SPAWN_TIME_EVERY_N_POINTS =
+                200; // Increase spawn rate if mines every 200 points
         public static final float DECREASE_SPAWN_TIME_BY = 0.25f;
         public static final float MIN_SPAWN_TIME = 0.5f;
-        public static final int INCREASE_SPEED_EVERY_N_POINTS = 300; // Increase speed of mines every 300 points
+        public static final int INCREASE_SPEED_EVERY_N_POINTS =
+                300; // Increase speed of mines every 300 points
         public static final int INCREASE_SPEED_BY = -100;
         public static final float MAX_SCALE = 1.5f;
         public static final float MIN_SCALE = 0.9f;
-
     }
 
     public static class HEART {
@@ -58,7 +58,6 @@ public class Config {
         public static final int MAX_HEALTH_REWARD = 25;
         public static final TextureRegion TEXTURE = Assets.getTexture(RegionNames.HEART);
         public static int HIT_PENALTY = 50;
-
     }
 
     public static class PROJECTILE {
@@ -67,7 +66,6 @@ public class Config {
         public static final long SHOOTING_COOLDOWN = seconds(0.3);
         public static final int SPEED = 800;
         public static final TextureRegion TEXTURE = Assets.getTexture(RegionNames.PROJECTILE);
-
     }
 
     public static class LAYERS {
@@ -89,7 +87,6 @@ public class Config {
         public static final int PAUSE = Keys.P;
         public static final int RESTART = Keys.R;
         public static final int EXIT = Keys.ESCAPE;
-
     }
 
     public static void reset() {
@@ -97,6 +94,5 @@ public class Config {
         MINE.SPEED = -150;
     }
 
-    private Config() {
-    }
+    private Config() {}
 }

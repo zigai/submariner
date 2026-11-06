@@ -9,14 +9,10 @@ import com.zigai.submariner.components.CircleCollider;
 import com.zigai.submariner.components.Size;
 import com.zigai.submariner.components.Transform;
 
-
 public class CircleBoundsSystem extends IteratingSystem {
 
-    private static final Family FAMILY = Family.all(
-            CircleCollider.class,
-            Transform.class,
-            Size.class
-    ).get();
+    private static final Family FAMILY =
+            Family.all(CircleCollider.class, Transform.class, Size.class).get();
 
     public CircleBoundsSystem() {
         super(FAMILY);
@@ -31,4 +27,3 @@ public class CircleBoundsSystem extends IteratingSystem {
         collider.bounds.setPosition(pos);
     }
 }
-

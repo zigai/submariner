@@ -1,5 +1,7 @@
 package com.zigai.submariner.systems;
 
+import static com.zigai.submariner.Assets.explosion;
+
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.SortedIteratingSystem;
@@ -8,14 +10,12 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.zigai.submariner.Mappers;
 import com.zigai.submariner.components.*;
 
-import static com.zigai.submariner.Assets.explosion;
-
-
 public class RenderSystem extends SortedIteratingSystem {
     private final SpriteBatch batch;
     private final Viewport viewport;
 
-    private static final Family FAMILY = Family.all(Transform.class, Texture.class, Layer.class, Size.class).get();
+    private static final Family FAMILY =
+            Family.all(Transform.class, Texture.class, Layer.class, Size.class).get();
 
     public RenderSystem(SpriteBatch batch, Viewport viewport) {
         super(FAMILY, LayerComparator.INSTANCE);
@@ -24,11 +24,12 @@ public class RenderSystem extends SortedIteratingSystem {
     }
 
     @Override
-    public void update(float deltaTime) {   // override to avoid calling batch.begin/end for each entity
+    public void update(
+            float deltaTime) { // override to avoid calling batch.begin/end for each entity
         viewport.apply();
         batch.setProjectionMatrix(viewport.getCamera().combined);
         batch.begin();
-        super.update(deltaTime);    // calls processEntity method, which is wrapped with begin/end
+        super.update(deltaTime); // calls processEntity method, which is wrapped with begin/end
         batch.end();
     }
 
@@ -40,11 +41,17 @@ public class RenderSystem extends SortedIteratingSystem {
 
         explosion.update(deltaTime);
         explosion.draw(batch);
-        
-        batch.draw(texture.region, transform.position.x, transform.position.y,
-                size.width / 2, size.height / 2,
-                size.width, size.height,
-                transform.scale.x, transform.scale.y, transform.rotation
-        );
+
+        batch.draw(
+                texture.region,
+                transform.position.x,
+                transform.position.y,
+                size.width / 2,
+                size.height / 2,
+                size.width,
+                size.height,
+                transform.scale.x,
+                transform.scale.y,
+                transform.rotation);
     }
 }

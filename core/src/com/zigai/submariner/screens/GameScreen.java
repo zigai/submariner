@@ -1,9 +1,8 @@
 package com.zigai.submariner.screens;
 
-import com.badlogic.ashley.core.EntitySystem;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.ashley.core.PooledEngine;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -14,13 +13,13 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.zigai.submariner.Assets;
 import com.zigai.submariner.Config;
+import com.zigai.submariner.Config.FISH;
+import com.zigai.submariner.Config.MINE;
 import com.zigai.submariner.GameManager;
 import com.zigai.submariner.SubmarinerGame;
 import com.zigai.submariner.assets.AssetDescriptors;
 import com.zigai.submariner.systems.*;
 import com.zigai.submariner.systems.debug.*;
-import com.zigai.submariner.Config.FISH;
-import com.zigai.submariner.Config.MINE;
 
 public class GameScreen extends ScreenAdapter {
     private static final Logger log = new Logger(GameScreen.class.getSimpleName(), Logger.DEBUG);
@@ -68,10 +67,11 @@ public class GameScreen extends ScreenAdapter {
         if (GameManager.INSTANCE.isDebugMode()) {
             engine.addSystem(new GridRenderSystem(viewport, renderer));
             engine.addSystem(new DebugRenderSystem(viewport, renderer));
-            engine.addSystem(new DebugCameraSystem(
-                    (float) Config.WORLD_WIDTH / 2, (float) Config.WORLD_HEIGHT / 2,
-                    camera
-            ));
+            engine.addSystem(
+                    new DebugCameraSystem(
+                            (float) Config.WORLD_WIDTH / 2,
+                            (float) Config.WORLD_HEIGHT / 2,
+                            camera));
             engine.addSystem(new DebugInputSystem());
         }
         EntityFactory factory = engine.getSystem(EntityFactory.class);
@@ -95,7 +95,6 @@ public class GameScreen extends ScreenAdapter {
         renderer.dispose();
         engine.removeAllEntities();
     }
-
 
     @Override
     public void render(float delta) {

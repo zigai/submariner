@@ -2,13 +2,13 @@ package com.zigai.submariner.systems.debug;
 
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-
 import com.zigai.submariner.systems.debug.support.DebugCameraController;
 
 public class DebugCameraSystem extends EntitySystem {
 
     // == constants ==
-    private static final DebugCameraController DEBUG_CAMERA_CONTROLLER = new DebugCameraController();
+    private static final DebugCameraController DEBUG_CAMERA_CONTROLLER =
+            new DebugCameraController();
 
     // == attributes ==
     private final OrthographicCamera camera;

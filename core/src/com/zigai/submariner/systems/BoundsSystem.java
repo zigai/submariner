@@ -10,11 +10,8 @@ import com.zigai.submariner.components.Transform;
 
 public class BoundsSystem extends IteratingSystem {
 
-    private static final Family FAMILY = Family.all(
-            BoxCollider.class,
-            Transform.class,
-            Size.class
-    ).get();
+    private static final Family FAMILY =
+            Family.all(BoxCollider.class, Transform.class, Size.class).get();
 
     public BoundsSystem() {
         super(FAMILY);
@@ -26,7 +23,7 @@ public class BoundsSystem extends IteratingSystem {
         Transform transform = Mappers.TRANSFORM.get(entity);
         Size size = Mappers.SIZE.get(entity);
         collider.bounds.setPosition(transform.position);
-        //bounds.rectangle.setSize(size.width * transform.scale.x, size.height * transform.scale.y);
+        // bounds.rectangle.setSize(size.width * transform.scale.x, size.height *
+        // transform.scale.y);
     }
 }
-

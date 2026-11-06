@@ -1,10 +1,8 @@
 package com.zigai.submariner.systems.debug;
 
-
 import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.Viewport;
-
 import com.zigai.submariner.systems.debug.support.ViewportUtils;
 
 public class GridRenderSystem extends EntitySystem {

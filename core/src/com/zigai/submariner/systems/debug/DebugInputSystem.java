@@ -5,10 +5,7 @@ import com.badlogic.ashley.core.EntitySystem;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
-/**
- * Created by goran on 11/02/2017.
- */
-
+/** Created by goran on 11/02/2017. */
 public class DebugInputSystem extends EntitySystem {
 
     private boolean debugGrid = false;
@@ -17,8 +14,7 @@ public class DebugInputSystem extends EntitySystem {
     private EntitySystem debugRenderSystem;
 
     // == constructors ==
-    public DebugInputSystem() {
-    }
+    public DebugInputSystem() {}
 
     // == public methods ==
     @Override

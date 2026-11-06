@@ -15,7 +15,8 @@ import com.badlogic.gdx.utils.Logger;
 public class DebugCameraController {
 
     // == constants ==
-    private static final Logger log = new Logger(DebugCameraController.class.getName(), Logger.DEBUG);
+    private static final Logger log =
+            new Logger(DebugCameraController.class.getName(), Logger.DEBUG);
 
     // == attributes ==
     private Vector2 position = new Vector2();
@@ -49,8 +50,8 @@ public class DebugCameraController {
     }
 
     /**
-     * Applies internal position and zoom to specified camera.
-     * Call this method after handling debug input.
+     * Applies internal position and zoom to specified camera. Call this method after handling debug
+     * input.
      *
      * @param camera The camera instance.
      * @throws IllegalArgumentException if camera param is null.
@@ -113,7 +114,6 @@ public class DebugCameraController {
         if (info.isLogPressed()) {
             logDebug();
         }
-
     }
 
     // == private methods ==

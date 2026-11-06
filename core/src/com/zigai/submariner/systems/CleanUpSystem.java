@@ -10,11 +10,8 @@ import com.zigai.submariner.components.Transform;
 
 public class CleanUpSystem extends IteratingSystem {
 
-    private static final Family FAMILY = Family.all(
-            CleanUp.class,
-            Transform.class,
-            Size.class
-    ).get();
+    private static final Family FAMILY =
+            Family.all(CleanUp.class, Transform.class, Size.class).get();
 
     public CleanUpSystem() {
         super(FAMILY);
@@ -30,4 +27,3 @@ public class CleanUpSystem extends IteratingSystem {
         }
     }
 }
-

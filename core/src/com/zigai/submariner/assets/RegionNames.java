@@ -9,6 +9,5 @@ public class RegionNames {
     public static final String PROJECTILE = "projectile";
     public static final String SUBMARINE = "submarine";
 
-    private RegionNames() {
-    }
+    private RegionNames() {}
 }

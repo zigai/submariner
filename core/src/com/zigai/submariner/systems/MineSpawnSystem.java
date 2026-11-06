@@ -2,7 +2,6 @@ package com.zigai.submariner.systems;
 
 import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.systems.IntervalSystem;
-import com.zigai.submariner.Config;
 
 public class MineSpawnSystem extends IntervalSystem {
     private EntityFactory factory;

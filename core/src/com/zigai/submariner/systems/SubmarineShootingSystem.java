@@ -1,9 +1,7 @@
 package com.zigai.submariner.systems;
 
 import com.badlogic.ashley.core.EntitySystem;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.zigai.submariner.assets.AssetDescriptors;
 
 public class SubmarineShootingSystem extends EntitySystem {
     private final long cooldown;

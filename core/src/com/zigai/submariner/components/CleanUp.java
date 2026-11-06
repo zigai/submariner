@@ -6,6 +6,5 @@ import com.badlogic.gdx.utils.Pool;
 public class CleanUp implements Component, Pool.Poolable {
 
     @Override
-    public void reset() {
-    }
+    public void reset() {}
 }

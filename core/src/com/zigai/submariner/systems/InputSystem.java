@@ -1,29 +1,26 @@
 package com.zigai.submariner.systems;
 
-
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.Gdx;
+import com.zigai.submariner.Config.CONTROLS;
 import com.zigai.submariner.Config.SUBMARINE;
 import com.zigai.submariner.GameManager;
 import com.zigai.submariner.Mappers;
 import com.zigai.submariner.components.Submarine;
 import com.zigai.submariner.components.Transform;
-import com.zigai.submariner.Config.CONTROLS;
 
 public class InputSystem extends IteratingSystem {
 
-    private static final Family FAMILY = Family.all(
-            Submarine.class,
-            Transform.class
-    ).get();
+    private static final Family FAMILY = Family.all(Submarine.class, Transform.class).get();
 
     public InputSystem() {
         super(FAMILY);
     }
 
-    // we don't need to override the update Iterating system method because there is no batch begin/end
+    // we don't need to override the update Iterating system method because there is no batch
+    // begin/end
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
         Transform transform = Mappers.TRANSFORM.get(entity);

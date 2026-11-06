@@ -5,6 +5,5 @@ import com.badlogic.gdx.utils.Pool;
 
 public class Submarine implements Component, Pool.Poolable {
     @Override
-    public void reset() {
-    }
+    public void reset() {}
 }
