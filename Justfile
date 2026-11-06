@@ -1,0 +1,49 @@
+# Format every supported first-party file type
+format:
+    @git ls-files -co --exclude-standard -z -- "*.java" | xargs -0 -r google-java-format --aosp --replace
+    @git ls-files -co --exclude-standard -z | while IFS= read -r -d '' file; do if [[ -f $file ]]; then printf '%s\0' "$file"; fi; done | xargs -0 -r shfmt -f | xargs -r -d '\n' shfmt -w
+    @git ls-files -co --exclude-standard -- Justfile justfile "*.just" | while IFS= read -r file; do just --justfile "$file" --fmt; done
+    @just markdown fmt
+
+# Check the same files and tools without writing
+formatcheck:
+    @git ls-files -co --exclude-standard -z -- "*.java" | xargs -0 -r google-java-format --aosp --dry-run --set-exit-if-changed
+    @git ls-files -co --exclude-standard -z | while IFS= read -r -d '' file; do if [[ -f $file ]]; then printf '%s\0' "$file"; fi; done | xargs -0 -r shfmt -f | xargs -r -d '\n' shfmt -d
+    @git ls-files -co --exclude-standard -- Justfile justfile "*.just" | while IFS= read -r file; do just --justfile "$file" --fmt --check; done
+    @just markdown check
+
+# Check formatter configuration and supported files
+check: formatcheck
+
+# Build the game and all targets
+build:
+    @./gradlew --no-daemon build
+
+# Run the game tests
+test:
+    @./gradlew --no-daemon test
+
+# Remove generated build output
+clean:
+    @./gradlew --no-daemon clean
+
+# Run all checks and build the game
+checkfull: check build test
+
+# Apply safe lint autofixes, then format every supported file type
+fix: && format
+
+# Install repository dependencies
+setup:
+    @./gradlew --no-daemon dependencies
+
+# List available recipes
+[default]
+help:
+    @just --list
+
+alias fmt := format
+
+[private]
+markdown *args:
+    rumdl {{ args }} --disable MD001,MD013,MD024,MD025,MD026,MD031,MD032,MD033,MD034,MD036,MD041,MD058 --config 'MD060.enabled=true' --config 'MD060.style="aligned"' --config 'MD003.style="atx"' --config 'MD004.style="dash"' --config 'MD029.style="ordered"' --config 'MD046.style="fenced"' --config 'MD048.style="backtick"' --config 'MD049.style="asterisk"' --config 'MD050.style="asterisk"' --config 'MD055.style="leading_and_trailing"'

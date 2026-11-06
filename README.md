@@ -4,8 +4,8 @@ A 2D underwater game written in Java using LibGDX and Ashley.
 
 ![screnshot](assets/screenshot.png)
 
-
 ### Controls:
+
 - ```W``` - Up
 - ```S``` - Down
 - ```A``` - Backward
@@ -13,10 +13,11 @@ A 2D underwater game written in Java using LibGDX and Ashley.
 - ```SPACE``` - Shoot
 - ```P``` - Pause
 - ```R``` - Restart
-- ```F5``` -  Toggle debug grid
-- ```F6``` -  Toggle hitbox indicators
+- ```F5``` - Toggle debug grid
+- ```F6``` - Toggle hitbox indicators
 
 ### Assets:
+
 - [Background](https://opengameart.org/content/underwater-fantasy)
 - [Fish & Bombs](https://opengameart.org/content/underwater-diving-pack)
 - [Submarine](https://www.deviantart.com/darth-biomech/art/Submarine-626121234)
